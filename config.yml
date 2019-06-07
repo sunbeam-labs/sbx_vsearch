@@ -1,2 +1,6 @@
 sbx_vsearch:
   threads: 8
+  min-id: 0.5 #minimum identity for query-target match
+  weak-id: NULL #set lower than min-id and you will get some weaker matches too
+  userfields: "query+target+id2+alnlen+mism+gaps+qilo+qihi+tilo+tihi+qs+ts+qrow+trow" #fields for results file, see vsearch documentation for details
+  
