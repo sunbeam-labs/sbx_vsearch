@@ -1,23 +1,17 @@
-# sbx-centrifuge
+# sbx_vsearch
 
-[Sunbeam] extension for running [centrifuge]
+[Sunbeam] extension for [Vsearch] (https://github.com/torognes/vsearch)
 
 ## Installation
 
-    git clone https://github.com/sunbeam-labs/sbx_centrifuge
-    cat sunbeam/extensions/sbx_centrifuge/config.yml >> sunbeam_config.yml
+1. git clone https://github.com/sunbeam-labs/sbx_vsearch
+2. cp sbx_vsearch $SUNBEAM_DIR/extensions/
+3. cat sunbeam/extensions/sbx_vsearch/config.yml >> sunbeam_config.yml (the config.yml that your are using for your given project)
 
 ## Running
 
-This extension uses an [isolated Conda environment] for the centrifuge
-installation, so you need to include the `--use-conda` argument when running
-Sunbeam:
 
-    sunbeam run --configfile=sunbeam_config.yml --use-conda 
-
-The default MetaPhlAn2 database will be downloaded and stored inside the
-original Sunbeam Conda environment in `$CONDA_PREFIX/opt/centrifuge_databases`.
 
 [Sunbeam]: https://github.com/sunbeam-labs/sunbeam
-[Centrifuge]: https://github.com/infphilo/centrifuge
+[Vsearch]: https://github.com/torognes/vsearch
 [isolated Conda environment]: http://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#integrated-package-management
