@@ -1,5 +1,6 @@
 # -*- mode: Snakemake -*-
 
+# ---- VSEARCH
 TARGET_VSEARCH = [
     expand(str(MAPPING_FP/'vsearch'/'{sample}_report.tsv'), sample = Samples.keys()),
     expand(str(MAPPING_FP/'vsearch'/'{sample}.fasta'), sample = Samples.keys())
@@ -23,16 +24,11 @@ rule run_vsearch:
         alignments = str(MAPPING_FP/'vsearch'/'{sample}.fasta'), sample = Samples.keys()
     threads:
         Cfg['sbx_vsearch']['threads']
-
-#TODO: all of these below have to be under "params:" like with other rules
-iddef:
-        Cfg['sbx_vsearch']['iddef']
-    min_id:
-        Cfg['sbx_vsearch']['min_id']
-    userfields:
-        Cfg['sbx_vsearch']['userfields']
-    weak_id:
-        Cfg['sbx_vsearch']['weak_id']
+    params:
+        iddef=Cfg['sbx_vsearch']['iddef'],
+        min_id=Cfg['sbx_vsearch']['min_id'],
+        userfields=Cfg['sbx_vsearch']['userfields'],
+        weak_id=Cfg['sbx_vsearch']['weak_id']
     shell:
         """
             vsearch --usearch_global $(cat {input.query[0]} {input.query[1]}) \
@@ -40,10 +36,10 @@ iddef:
             --userout {output.reports} \
             --matched {output.alignments} \
             --threads {threads} \
-            --iddef {iddef} \
-            --id {min_id} \
-            --userfields {userfields} \
-            --weak_id {weak_id}
+            --iddef {params.iddef} \
+            --id {params.min_id} \
+            --userfields {params.userfields} \
+            --weak_id {params.weak_id}
         """
 
 #TODO: summary of results
