@@ -12,16 +12,27 @@ rule all_vsearch:
     input:
         TARGET_VSEARCH
 
+#Vsearch can not do paired-end so we split forward and reverse reads into two commands
+#Vsearch has to have fasta vs. fasta for the usearch_global so first we do a --fastx_filter without any parameters, this just converts the fastq.gz to fasta
+
+maybe we need two rules
+one to convert and combine
+and one to do the --usearch_global
+
+cat $(vsearch --fastx_filter {input.query[0]} --fastaout -) \
+    $(vsearch --fastx_filter {input.query[1]} --fastaout -) > \
+    {output}
+
 # Run vsearch 
 rule run_vsearch:
     input:
-        query = expand(str(QC_FP/'decontam'/'{sample}_{rp}.fastq.gz'),
-                      sample = "{sample}",
-                      rp = Pairs),
+        query = expand(
+            str(QC_FP/'decontam'/'{{sample}}_{rp}.fastq.gz'),
+            rp = Pairs),
         db_file = Cfg['sbx_vsearch']['db']
     output:
-        reports = str(MAPPING_FP/'vsearch'/'{sample}_report.tsv'), sample = Samples.keys(),
-        alignments = str(MAPPING_FP/'vsearch'/'{sample}.fasta'), sample = Samples.keys()
+        reports = str(MAPPING_FP/'vsearch'/'{sample}_report.tsv'),
+        alignments = str(MAPPING_FP/'vsearch'/'{sample}.fasta')
     threads:
         Cfg['sbx_vsearch']['threads']
     params:
@@ -31,8 +42,18 @@ rule run_vsearch:
         weak_id=Cfg['sbx_vsearch']['weak_id']
     shell:
         """
-            vsearch --usearch_global $(cat {input.query[0]} {input.query[1]}) \
-            --db {input.db_file} \
+            vsearch --fastx_filter {input.query[0]} --fastaout - | \
+            vsearch --usearch_global - --db {input.db_file} \
+            --userout {output.reports} \
+            --matched {output.alignments} \
+            --threads {threads} \
+            --iddef {params.iddef} \
+            --id {params.min_id} \
+            --userfields {params.userfields} \
+            --weak_id {params.weak_id}
+
+            vsearch --fastx_filter {input.query[1]} --fastaout - | \
+            vsearch --usearch_global - --db {input.db_file} \
             --userout {output.reports} \
             --matched {output.alignments} \
             --threads {threads} \
@@ -41,6 +62,8 @@ rule run_vsearch:
             --userfields {params.userfields} \
             --weak_id {params.weak_id}
         """
+#this was tested to work:
+#--fastx_filter /scr1/users/danielsg/bello/sunbeam_output/qc/decontam/VenFeb16.106_1.fastq.gz --fastaout - | vsearch --usearch_global - {rest of stuff}
 
 #TODO: summary of results
 # An all-samples-in-one summary table, with samples on columns and taxa on
