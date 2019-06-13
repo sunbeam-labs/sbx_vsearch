@@ -61,7 +61,8 @@ rule run_vsearch:
         iddef = str(Cfg['sbx_vsearch']['iddef']),
         min_id = str(Cfg['sbx_vsearch']['min_id']),
         userfields = str(Cfg['sbx_vsearch']['userfields']),
-        weak_id = str(Cfg['sbx_vsearch']['weak_id'])
+        weak_id = str(Cfg['sbx_vsearch']['weak_id']),
+        row_len = str(Cfg['sbx_vsearch']['row_len'])
     shell:
         """
             vsearch --usearch_global {input.query} \
@@ -72,7 +73,8 @@ rule run_vsearch:
             --iddef {params.iddef} \
             --id {params.min_id} \
             --userfields {params.userfields} \
-            --weak_id {params.weak_id}
+            --weak_id {params.weak_id} \
+            --rowlen {params.row_len}
         """
 #this was tested to work:
 #--fastx_filter /scr1/users/danielsg/bello/sunbeam_output/qc/decontam/VenFeb16.106_1.fastq.gz --fastaout - | vsearch --usearch_global - {rest of stuff}

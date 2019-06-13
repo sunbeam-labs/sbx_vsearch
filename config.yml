@@ -5,3 +5,4 @@ sbx_vsearch:
   weak_id: NULL #set lower than min-id and you will get some weaker matches too
   userfields: "query+target+id2+alnlen+mism+gaps+qilo+qihi+tilo+tihi+qs+ts+qrow+trow" #fields for results file, see vsearch documentation for details
   iddef: 2 #the way "identity" is calculated, see vsearch docs for details (it's equal to (matching columns) / (alignment length) excluding terminal gaps)
+  row_len: 64 #Width of alignment lines in --alnout output. The default value is 64. Set to 0 to eliminate wrapping --- this only works for the alnout arg, not for the matched fasta!
