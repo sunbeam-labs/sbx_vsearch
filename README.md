@@ -1,6 +1,6 @@
 # sbx_vsearch
 
-[Sunbeam] extension for [Vsearch] (https://github.com/torognes/vsearch)
+[Sunbeam](https://github.com/sunbeam-labs/sunbeam) extension for [Vsearch](https://github.com/torognes/vsearch)
 
 ## Installation
 
@@ -10,8 +10,10 @@
 
 ## Running
 
+1. sunbeam --use_conda all_vsearch {rest of parameters}
 
+## References
 
-[Sunbeam]: https://github.com/sunbeam-labs/sunbeam
-[Vsearch]: https://github.com/torognes/vsearch
-[isolated Conda environment]: http://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#integrated-package-management
+[Sunbeam](https://github.com/sunbeam-labs/sunbeam)
+[Vsearch](https://github.com/torognes/vsearch)
+[isolated Conda environment](http://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#integrated-package-management)
