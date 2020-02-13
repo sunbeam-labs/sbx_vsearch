@@ -2,6 +2,8 @@
 
 [Sunbeam](https://github.com/sunbeam-labs/sunbeam) extension for [Vsearch](https://github.com/torognes/vsearch)
 
+This extension allows you to use the --usearch-global option of vsearch to do alignment of reads to any fasta file.
+
 ## Installation
 
 1. git clone https://github.com/sunbeam-labs/sbx_vsearch
