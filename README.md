@@ -12,7 +12,7 @@ This extension allows you to use the --usearch-global option of vsearch to do al
 
 ## Running
 
-1. sunbeam --use_conda all_vsearch {rest of parameters}
+1. sunbeam all_vsearch {rest of parameters}
 
 ## References
 
@@ -20,4 +20,3 @@ This extension allows you to use the --usearch-global option of vsearch to do al
 
 [Vsearch](https://github.com/torognes/vsearch)
 
-[isolated Conda environment](http://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#integrated-package-management)
