@@ -6,3 +6,4 @@ sbx_vsearch:
   userfields: "query+target+id2+alnlen+mism+gaps+qilo+qihi+tilo+tihi+qs+ts+qrow+trow" #fields for results file, see vsearch documentation for details
   iddef: 2 #the way "identity" is calculated, see vsearch docs for details (it's equal to (matching columns) / (alignment length) excluding terminal gaps)
   fasta_width: 0 #Width of alignment lines in fasta output, set to 0 to eliminate wrapping
+  maxaccepts: 10 #Maximum number of hits to accept before stopping the search
