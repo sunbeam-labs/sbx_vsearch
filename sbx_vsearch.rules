@@ -25,7 +25,7 @@ rule run_vsearch:
         userfields = str(Cfg['sbx_vsearch']['userfields']),
         weak_id = str(Cfg['sbx_vsearch']['weak_id']),
         fasta_width = str(Cfg['sbx_vsearch']['fasta_width']),
-        max_accepts = str(Cfg['sbx_vsearch']['maxaccepts'])
+        maxaccepts = str(Cfg['sbx_vsearch']['maxaccepts'])
     shell:
         """
             vsearch --usearch_global {input.query} \
@@ -38,5 +38,5 @@ rule run_vsearch:
             --userfields {params.userfields} \
             --weak_id {params.weak_id} \
             --fasta_width {params.fasta_width} \
-            --maxaccepts {params.max_accepts}
+            --maxaccepts {params.maxaccepts}
         """
