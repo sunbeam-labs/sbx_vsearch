@@ -1,6 +1,0 @@
-name: sbx_vsearch
-channels:
-  - bioconda
-dependencies:
-  - seqtk
-  - vsearch

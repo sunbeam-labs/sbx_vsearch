@@ -1,0 +1,11 @@
+name: Tests
+
+on:
+    pull_request:
+      branches: [ master, main ]
+
+jobs:
+    run-tests:
+        uses: ./.github/workflows/tests.yml
+        secrets: inherit
+    
