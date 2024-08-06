@@ -46,7 +46,7 @@ rule fq_2_fa:
 rule run_vsearch:
     input:
         query=str(MAPPING_FP / "R1" / "{sample}_1.fasta"),
-        db=str(Cfg["sbx_vsearch"]["db"]),
+        db=str(Cfg["sbx_vsearch"]["db_fp"]),
     output:
         reports=str(MAPPING_FP / "vsearch" / "{sample}_report.tsv"),
         alignments=str(MAPPING_FP / "vsearch" / "{sample}.fasta"),

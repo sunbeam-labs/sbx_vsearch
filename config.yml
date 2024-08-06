@@ -1,5 +1,5 @@
 sbx_vsearch:
-  db: ""
+  db_fp: ""
   threads: 4
   min_id: 0.85 #minimum identity for query-target match
   weak_id: 0.85 #set lower than min-id and you will get some weaker matches too

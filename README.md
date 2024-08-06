@@ -3,7 +3,9 @@
 # sbx_vsearch
 
 <!-- badges: start -->
-
+[![Tests](https://github.com/sunbeam-labs/sbx_vsearch/actions/workflows/pr.yml/badge.svg)](https://github.com/sunbeam-labs/sbx_vsearch/actions/workflows/pr.yml)
+[![Release](https://img.shields.io/github/release/sunbeam-labs/sbx_vsearch.svg?style=flat)](https://github.com/sunbeam-labs/sbx_vsearch/releases/latest)
+[![DockerHub](https://img.shields.io/docker/pulls/sunbeamlabs/sbx_vsearch)](https://hub.docker.com/repository/docker/sunbeamlabs/sbx_vsearch/)
 <!-- badges: end -->
 
 A [Sunbeam](https://github.com/sunbeam-labs/sunbeam) extension for using [Vsearch](https://github.com/torognes/vsearch) with the `--usearch-global` option to do alignment of reads to any fasta file. 
@@ -27,7 +29,7 @@ N.B. For sunbeam versions <4 the last command will be something like `sunbeam ru
 
 ## Configuration
 
-  - db: Is the filepath to a directory containing reference fasta files
+  - db_fp: Is the filepath to a directory containing reference fasta files
   - threads: Is the number of threads to use while running vsearch
   - min_id: Is the minimum identity for query-target match
   - weak_id: Is the set lower than min-id and you will get some weaker matches too
